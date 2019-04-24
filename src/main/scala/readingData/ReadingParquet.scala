@@ -1,11 +1,13 @@
-package main
+package readingData
 
 import org.apache.spark.sql.SparkSession
 
-object HelloSpark {
+class ReadingParquet {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder.appName("Hello Spark App").getOrCreate()
-    println("Hello Spark")
-    spark.stop()
+    
+    val parquetFile = spark.read.parquet("/Users/varshapa/Downloads/parquetFile.parquet")
+    parquetFile.show()
   }
+
 }
